@@ -29,6 +29,11 @@ function chance(x, y) {
 	return Math.round(Math.random()*(y-x) + x)
 }
 
+//A function to randomly choose a percentage probability
+function prob() {
+	chance(1, 100);
+}
+
 //Repeatedly prompt for password until the right one is entered.  Doesn't work if JS is disabled, so consider having everything hidden until gatekeeper returns true.  Easily hacked by anyone who can view source, so consider dropping the password into the script via PHP.
 function gatekeeper(password) {
 	var magicWord=prompt("Please enter the password: ");
@@ -42,4 +47,18 @@ function gatekeeper(password) {
 //Find the value of n to a certain number of significant figures.
 function sigFig(n, place) {
 	return Math.floor(n*place)/place;
+}
+
+//a function for AJAX.
+function probe(file, func) {
+	var probe = new XMLHttpRequest();
+	probe.open("POST", file, true);
+	probe.send();
+	probe.onreadystatechange = function() {
+		if (probe.readyState == 4 && probe.status == 200) {
+			if (func) {
+				func(probe.responseText);
+			}
+		}
+	}	
 }
