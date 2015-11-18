@@ -37,3 +37,15 @@ function sift(choice, text) {
 		return false;
 	}
 }
+
+//a function to get URL parameters
+function grab(param) {
+	var grabs = {};
+	var grab = window.location.search.substring(1);
+	grab = grab.split("&");
+	for (i=0; i < grab.length; i++) {
+		var pair = grab[i].split("=");
+		grabs[pair[0]] = pair[1];
+	}
+	return decodeURIComponent(grabs[param]);
+}
