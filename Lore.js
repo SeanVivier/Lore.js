@@ -132,3 +132,16 @@ function wordCount(txt) {
         var sacrificialString = txt;
         return sacrificialString.split(/\s+/).length;
 }
+
+//two functions to make for loops easier to write
+Array.prototype.loop = function (func) {
+	for (i = 0; i < this.length; i++) {
+		func(this[i]);
+	}
+}
+
+function looper(arr, func) {
+	for (i = 0; i < arr.length; i++) {
+		func(arr[i]);
+	}
+}
