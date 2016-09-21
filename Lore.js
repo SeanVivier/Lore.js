@@ -145,3 +145,8 @@ function looper(arr, func) {
 		func(arr[i]);
 	}
 }
+
+//a function to rotate an element
+function rot(elem, n) {
+	$(elem).css("transform", "rotate(" + n + "deg)").css("-webkit-transform", "rotate(" + n + "deg)").css("-ms-transform", "rotate(" + n + "deg)").css("-moz-transform", "rotate(" + n + "deg)").css("-o-transform", "rotate(" + n + "deg)");
+}
