@@ -150,3 +150,10 @@ function looper(arr, func) {
 function rot(elem, n) {
 	$(elem).css("transform", "rotate(" + n + "deg)").css("-webkit-transform", "rotate(" + n + "deg)").css("-ms-transform", "rotate(" + n + "deg)").css("-moz-transform", "rotate(" + n + "deg)").css("-o-transform", "rotate(" + n + "deg)");
 }
+
+//a function to return the current date in the format I prefer
+function tellDate() {
+	var d = new Date();
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+}
