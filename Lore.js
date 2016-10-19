@@ -191,3 +191,55 @@ function burgerize(elem) {
 	$(elem).append("&equiv;");
 }
 
+/* OBJECTS */
+
+//an object to simplify working with the HTML5 canvas element
+function Art(ident) {
+	var y = document.getElementById(ident);
+	var x = y.getContext("2d");
+	
+	this.line = function(obj) {
+		x.beginPath();
+		x.moveTo(obj.start[0], obj.start[1]);
+		x.lineTo(obj.end[0], obj.end[1]);
+		x.strokeStyle = obj.color;
+		x.lineWidth = obj.width;
+		x.stroke();
+	}
+	
+	this.block = function(obj) {
+		x.rect(obj.topLeft[0], obj.topLeft[1], obj.bottomRight[0], obj.bottomRight[1]);
+		x.fillStyle = obj.color;
+		x.fill()
+	}
+	
+	this.box = function(obj) {
+		x.beginPath();
+		x.rect(obj.topLeft[0], obj.topLeft[1], obj.bottomRight[0], obj.bottomRight[1]);
+		x.strokeStyle = obj.color;
+		x.lineWidth = obj.width;
+		x.stroke();
+	}
+	
+	this.curve = function(obj) {
+		x.beginPath();
+		x.arc(obj.center[0], obj.center[1], obj.radius, obj.degree, obj.angle);
+		x.strokeStyle = obj.color;
+		x.lineWidth = obj.width;
+		x.stroke();
+	}
+	
+	this.circle = function(obj) {
+		x.beginPath();
+		x.arc(obj.center[0], obj.center[1], obj.radius, 0, 2 * Math.PI);
+		x.strokeStyle = obj.color;
+		x.lineWidth = obj.width;
+		x.stroke();
+	}
+	
+	this.wheel = function(obj) {
+		x.arc(obj.center[0], obj.center[1], obj.radius, 0, 2 * Math.PI);
+		x.fillStyle = obj.color;
+		x.fill();
+	}
+}
