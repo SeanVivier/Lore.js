@@ -1,3 +1,5 @@
+/* CLASSES */
+
 //So that all headings can be targeted at once.
 $(document).ready(function() {
     $("h1").addClass("h");
@@ -8,7 +10,7 @@ $(document).ready(function() {
     $("h6").addClass("h");
 });
 
-//VARIABLES
+/* VARIABLES */
 
 //Spanish special characters
 var AAcute = "\xC1";
@@ -26,7 +28,7 @@ var uUml = "\xFC";
 var iQuest = "\xBF";
 var iExcl = "\xA1";
 
-//FUNCTIONS
+/* FUNCTIONS */
 
 //Choose a random number between two numbers.  Inspired by Python's randint.
 function chance(x, y) {
@@ -157,3 +159,35 @@ function tellDate() {
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
 }
+
+//a function to pick one from many at random
+function pick(arr) {
+	return arr[chance(0, arr.length - 1)];
+}
+
+//functions for local storage
+function remember(name, datum) {
+	if (datum === undefined) {
+		return localStorage.getItem(name);
+	} else {
+		localStorage.setItem(name, datum);
+	}
+}
+
+function memorize(name, datum) {
+	localStorage.setItem(name, datum);
+}
+
+function remind(name) {
+	return localStorage.getItem(name);
+}
+
+function forget(name) {
+	localStorage.removeItem(name);
+}
+
+//function to add a burger icon to an element
+function burgerize(elem) {
+	$(elem).append("&equiv;");
+}
+
