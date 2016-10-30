@@ -191,6 +191,11 @@ function burgerize(elem) {
 	$(elem).append("&equiv;");
 }
 
+//function to remove a substring from a string
+String.prototype.scrap = function(substr) {
+	return this.replace(substr, "");
+}
+
 /* OBJECTS */
 
 //an object to simplify working with the HTML5 canvas element
