@@ -196,6 +196,15 @@ String.prototype.scrap = function(substr) {
 	return this.replace(substr, "");
 }
 
+//function to determine if a number is within a certain bounds
+Number.prototype.btwn = function(lowest, highest) {
+	if (this >= lowest && this <= highest) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 /* OBJECTS */
 
 //an object to simplify working with the HTML5 canvas element
