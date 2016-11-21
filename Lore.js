@@ -205,6 +205,11 @@ Number.prototype.btwn = function(lowest, highest) {
 	}
 }
 
+//function to disguise the URL.
+function glamour(url) {
+	window.history.replaceState(window.location.pathname, "Title", url);
+}
+
 /* OBJECTS */
 
 //an object to simplify working with the HTML5 canvas element
