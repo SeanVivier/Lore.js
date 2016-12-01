@@ -210,6 +210,44 @@ function glamour(url) {
 	window.history.replaceState(window.location.pathname, "Title", url);
 }
 
+//to change or set the favicon
+function adorn(url) {
+	$("link[rel='icon']").attr("href", url); //change if already set
+	$("head").append("<link rel='icon' href='" + url + "' />"); //set if absent
+}
+
+//to create an accordion within a specific element
+function fold(elem, arr) {
+	$.each(arr, function(k, v) {
+		$(elem).append("<h3>" + k + "</h3><div>" + v + "</div>");
+	});
+	$(elem).accordion();
+}
+
+//to open multiple sites at once
+function launch(arr) {
+	if (arr.length === 1) {
+		window.location = arr[0];
+	} else if (arr.length > 1) {
+		for (i = 0; i < arr.length - 1; i++) {
+			window.open(arr[i]);
+		}
+		window.location = arr[arr.length - 1];
+	} else {
+		window.close();
+	}
+}
+
+//to find the last element in an array
+function pluck(arr) {
+	return arr[arr.length - 1];
+}
+
+//a function to center on the vertical
+function verticalCenter(elem) {
+	$(elem).css("position", "absolute").css("top", (window.innerHeight - $(elem).height())/2);
+}
+
 /* OBJECTS */
 
 //an object to simplify working with the HTML5 canvas element
