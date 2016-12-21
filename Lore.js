@@ -248,6 +248,11 @@ function verticalCenter(elem) {
 	$(elem).css("position", "absolute").css("top", (window.innerHeight - $(elem).height())/2);
 }
 
+//function to fill the body's background with a repeated image
+function wallpaper(pic) {
+	$("body").css("background-image", "url(" + pic + ")").css("background-size", "cover");
+}
+
 /* OBJECTS */
 
 //an object to simplify working with the HTML5 canvas element
