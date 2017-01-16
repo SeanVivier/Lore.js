@@ -165,6 +165,13 @@ function pick(arr) {
 	return arr[chance(0, arr.length - 1)];
 }
 
+//a function to pick at random and discard
+function pull(arr) {
+	var raffle = pick(arr);
+	arr.drop(raffle);
+	return raffle;
+}
+
 //functions for local storage
 function remember(name, datum) {
 	if (datum === undefined) {
