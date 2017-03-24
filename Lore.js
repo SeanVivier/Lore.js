@@ -160,6 +160,27 @@ function tellDate() {
 	return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
 }
 
+//a function to return the time of day in the format I prefer
+function tellTime() {
+	var meridian = " ";
+	var timepiece = new Date();
+	var hours = timepiece.getHours();
+	if (hours > 12) {
+		hours = hours - 12;
+		meridian+="PM";
+	} else if (hours === 0) {
+		hours = 12;
+		meridian+="AM";
+	} else {
+		meridian+="AM";
+	}
+	var minutes = timepiece.getMinutes();
+	if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	return hours + ":" + minutes + meridian;
+}
+
 //a function to pick one from many at random
 function pick(arr) {
 	return arr[chance(0, arr.length - 1)];
