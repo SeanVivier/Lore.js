@@ -219,9 +219,15 @@ function burgerize(elem) {
 	$(elem).append("&equiv;");
 }
 
+//function for global replace
+String.prototype.amend = function(before, after) {
+	var template = new RegExp(before, "g");
+	return this.replace(template, after);
+}
+
 //function to remove a substring from a string
 String.prototype.scrap = function(substr) {
-	return this.replace(substr, "");
+	return this.amend(substr, "");
 }
 
 //function to determine if a number is within a certain bounds
