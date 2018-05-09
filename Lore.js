@@ -28,6 +28,54 @@ var uUml = "\xFC";
 var iQuest = "\xBF";
 var iExcl = "\xA1";
 
+//key and mouse events
+var leftClick = 1;
+var midClick = 2;
+var rightClick = 3;
+var leftArrow = 37;
+var rightArrow = 39;
+var upArrow = 38;
+var downArrow = 40;
+var enterKey = 13;
+var aKey = 65;
+var bKey = 66;
+var cKey = 67;
+var dKey = 68;
+var eKey = 69;
+var fKey = 70;
+var gKey = 71;
+var hKey = 72;
+var iKey = 73;
+var jKey = 74;
+var kKey = 75;
+var lKey = 76;
+var mKey = 77;
+var nKey = 78;
+var oKey = 79;
+var pKey = 80;
+var qKey = 81;
+var rKey = 82;
+var sKey = 83;
+var tKey = 84;
+var uKey = 85;
+var vKey = 86;
+var wKey = 87;
+var xKey = 88;
+var yKey = 89;
+var zKey = 90;
+var zeroKey = 48;
+var oneKey = 49;
+var twoKey = 50;
+var threeKey = 51;
+var fourKey = 52;
+var fiveKey = 53;
+var sixKey = 54;
+var sevenKey = 55;
+var eightKey = 56;
+var nineKey = 57;
+
+var path = window.location.pathname;
+
 /* FUNCTIONS */
 
 //Choose a random number between two numbers.  Inspired by Python's randint.
@@ -45,7 +93,7 @@ function sigFig(n, place) {
 	return Math.floor((n*place)/place);
 }
 
-//a function for AJAX.
+//functions for AJAX.
 function probe(file, func) {
 	var probe = new XMLHttpRequest();
 	probe.open("POST", file, true);
@@ -57,6 +105,14 @@ function probe(file, func) {
 			}
 		}
 	}	
+}
+
+function herald(site, obj, func) {
+	$.ajax({
+		url: site,
+		data: obj,
+		success: func
+	});
 }
 
 //a function for regular expressions
@@ -286,6 +342,278 @@ function verticalCenter(elem) {
 function wallpaper(pic) {
 	$("body").css("background-image", "url(" + pic + ")").css("background-size", "cover");
 }
+
+//a function to close a page after a certain number of seconds
+function detonate(s) {
+	setTimeout(function() {
+		window.close();
+	}, s*1000);
+}
+
+//a function to toggle between two classes 
+jQuery.fn.switcheroo = function(firstClass, secondClass) {
+	$(this).toggleClass(firstClass);
+	$(this).toggleClass(secondClass);
+}
+
+//a function to add pixels to a number
+function px(n) {
+	return n + "px";
+}
+
+//a function to render an element invisible
+jQuery.fn.vanish = function() {
+	$(this).css("visibility", "hidden");
+}
+
+//a function to uncover an invisible element
+jQuery.fn.behold = function() {
+	$(this).css("visibility", "visible");
+}
+
+//a function to toggle an element's visibility
+jQuery.fn.wink = function() {
+	if ($(this).css("visibility") === "visible") {
+		$(this).vanish();
+	} else {
+		$(this).behold();
+	}
+}
+
+//browser sniffing
+function waft(browser) {
+	if (navigator.userAgent.toLowerCase().indexOf(browser.toLowerCase()) > -1) {
+		return true;
+	} else {
+		return false;
+	}
+}	
+
+//a function to prevent default behavior with cross-browser compatibility
+function halt(ev) {
+	ev.preventDefault();
+	ev.stopPropagation();
+}
+
+//a function to download data
+function summon(name, data) {
+	var a = document.createElement("a");
+	a.href = data;
+	a.download = name;
+	a.click();
+}
+
+//a function to set a number as a price
+function price(num) {
+	var price = Math.round(num * 100) / 100;
+	return "$" + price.toFixed(2).toString();
+}
+
+//a function to scroll to top
+function snap() {
+	window.scrollTo(0, 0);
+}
+
+//a function to replace deprecated alert
+function voice(msg, ok) {
+	var okay = "OK";
+	if (ok) {
+		okay = ok;
+	}
+	$("body").append("<dialog style='position:fixed; top:25px; z-index:10; max-width:500px' open><p>" + msg + "</p><button onclick='$(this).parent().hide()' style='display:block; margin:auto'>" + okay + "</button></dialog>");
+}
+
+//function to remove all highlights
+function removeHighlight() {
+	window.getSelection().removeAllRanges();
+}
+
+//function to strip all cases of a class
+function strip(clas) {
+	$("." + clas).removeClass(clas);
+}
+
+//function to fake an event
+function feign(ev) {
+	window.dispatchEvent(new Event(ev));
+}
+
+//a function to dim opacity
+function dim(elem) {
+	$(elem).css("opacity", "0.5");
+}
+
+function undim(elem) {
+	$(elem).css("opacity", "1");
+}
+
+//function to create a new array with another array's values, that will not change when original array changes.
+function twin(arr) {
+	return JSON.parse(JSON.stringify(arr));
+}
+
+//functions to morph the size of elements
+jQuery.fn.thin = function(shrinkage) {
+	var breadth = $(this).width();
+	$(this).css("width", px(breadth - shrinkage));
+}
+
+jQuery.fn.fatten = function(growth) {
+	var breadth = $(this).width();
+	$(this).css("width", px(breadth + growth));
+}
+
+jQuery.fn.grow = function(growth) {
+	var heighth = $(this).height();
+	$(this).css("height", px(heighth + growth));
+}
+
+jQuery.fn.shrink = function(shrinkage) {
+	var heighth = $(this).height();
+	$(this).css("height", px(heighth - shrinkage));
+}
+
+//function to determine attributes
+jQuery.fn.hasValue = function(v) {
+	if ($(this).attr("value") === v) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+jQuery.fn.hasName = function(v) {
+	if ($(this).attr("name") === v) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+jQuery.fn.hasID = function(v) {
+	if ($(this).attr("id") === v) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+//a function to go down to the bottom of the page
+function dive() {
+	var bottom = $(document).height();
+	window.scrollTo(0, bottom);
+}
+
+//a function to add responsiveness
+function makeResponsive() {
+	$("head").append("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
+}
+
+//a global replace function for the whole page
+function trade(a, b) {
+	$("body").html($("body").html().amend(a, b));
+}
+
+//function for a quick delay
+function tic(func) {
+	setTimeout(function() {
+		func;
+	}, 250);
+}
+
+//functions to sort in order high and low
+Array.prototype.stack = function() {
+	this.sort(function(a, b) {
+		return a - b; //low to high
+	});
+}
+
+Array.prototype.rank = function() {
+	this.sort(function(a, b) {
+		return b - a; //high to low
+	});
+}
+
+//a function to make all links open in a new tab
+function spring() {
+	$("a").attr("target", "_blank");
+}
+
+//a function to change a boolean
+function flip(boo) {
+	return !boo;
+}
+
+//a function to scroll an element
+jQuery.fn.glide = function(buffer) {
+	$(this).css("position", "relative").css("top", "0px");
+	$(this).parent().css("overflow", "hidden");
+	var elem = $(this);
+	window.onwheel = function(e) {
+		//if the mouse is over it
+		var leftBound = elem.offset().left;
+		var rightBound = elem.width() + leftBound;
+		var upperBound = elem.offset().top;
+		var lowerBound = elem.height() + upperBound;
+		if (e.clientX > leftBound && e.clientX < rightBound && e.clientY > upperBound && e.clientY < lowerBound) {
+			var pos = parseInt(elem.css("top")) - e.deltaY;
+			halt(e);
+			//don't let it scroll beyond the first element
+			if (pos > 0) {
+				pos = 0;
+			}
+			//only move if the form is taller than the container
+			if (elem.height() > elem.parent().height()) {
+				//don't let it scroll past the last element
+				var edge = -1 * (elem.height() - elem.parent().height() + buffer);
+				//don't let it scroll beyond the end
+				if (pos < edge) {
+					pos = edge;
+				}
+			} else {
+				pos = 0;
+			}
+			elem.css("top", pos + "px");
+		}
+	}
+}
+
+//function for text to speech
+function say(txt) {
+	var msg = new SpeechSynthesisUtterance(txt);
+	window.speechSynthesis.speak(msg);
+}
+
+//in case we ever lose jQuery
+function x(el) {
+	return document.querySelector(el);
+}
+
+//for potential division by zero
+function tryDiv(numerator, denominator) {
+	if (denominator === 0) {
+		return Infinity;
+	} else {
+		return numerator / denominator;
+	}
+}
+
+//a function for components
+jQuery.fn.conjure = function(filePath, objArr) {
+    var elem = $(this);
+	$.get(filePath, function(res) {
+        objArr.forEach(function(obj) {
+			var html = res;
+            for (key in obj) {
+                html = html.replace("{" + key + "}", obj[key]);
+            }
+            elem.append(html);
+        });
+    });
+}
+
+
+
 
 /* OBJECTS */
 
