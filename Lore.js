@@ -600,20 +600,32 @@ function tryDiv(numerator, denominator) {
 
 //a function for components
 jQuery.fn.conjure = function(filePath, objArr) {
-    var elem = $(this);
+	var elem = $(this);
 	$.get(filePath, function(res) {
-        objArr.forEach(function(obj) {
+		objArr.forEach(function(obj) {
 			var html = res;
-            for (key in obj) {
-                html = html.replace("{" + key + "}", obj[key]);
-            }
-            elem.append(html);
-        });
-    });
+			for (key in obj) {
+				html = html.replace("{" + key + "}", obj[key]);
+			}
+			elem.append(html);
+		});
+	});
+}
+
+//a function for all-around box shadow
+jQuery.fn.shade = function(amt, color) {
+	$(this).css("box-shadow", "0 0 " + amt + " " + color + ", 0 0 " + amt + " " + color);
 }
 
 
-
+//a function for Mutation Observer
+jQuery.fn.evolve = function(func) {
+	var that = $(this)[0].id;
+	var mutant = new MutationObserver(function(mutations) {
+		func;
+	});
+	mutant.observe(document.getElementById(that), {attributes: true, childList: true, characterData: true});
+}
 
 /* OBJECTS */
 
