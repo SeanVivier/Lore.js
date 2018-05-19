@@ -617,6 +617,15 @@ jQuery.fn.shade = function(amt, color) {
 	$(this).css("box-shadow", "0 0 " + amt + " " + color + ", 0 0 " + amt + " " + color);
 }
 
+//function to switch classes between same element on click
+jQuery.fn.leap = function(c) {
+	var el = $(this);
+	el.click(function() {
+		el.removeClass(c);
+		$(this).addClass(c);
+	});
+}
+
 
 //a function for Mutation Observer
 jQuery.fn.evolve = function(func) {
