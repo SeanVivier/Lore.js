@@ -626,6 +626,29 @@ jQuery.fn.leap = function(c) {
 	});
 }
 
+//a function to add commas to numbers
+function commafy(num) {
+    n = num.toString();
+    var arr = n.split(".");
+    if (arr[0].length < 4) {
+        arr[0] = arr[0];
+    } else if (arr[0].length % 3 === 0) {
+        var x = arr[0].match(/.{1,3}/g);
+        arr[0] = x.join(",");
+    } else if (arr[0].length %3 === 1) {
+        var str = arr[0].substring(0, 1);
+        var x = arr[0].replace(str, "").match(/.{1,3}/g);
+        x.unshift(str);
+        arr[0] = x.join(",");
+    } else if (arr[0].length % 3 === 2) {
+        var str = arr[0].substring(0, 2);
+        var x = arr[0].replace(str, "").match(/.{1,3}/g);
+        x.unshift(str);
+        arr[0] = x.join(",");
+    }
+    return arr.join(".");
+}
+
 
 //a function for Mutation Observer
 jQuery.fn.evolve = function(func) {
