@@ -405,8 +405,7 @@ function summon(name, data) {
 
 //a function to set a number as a price
 function price(num) {
-	var price = Math.round(num * 100) / 100;
-	return "$" + price.toFixed(2).toString();
+	return "$" + commafy(num.toFixed(2));
 }
 
 //a function to scroll to top
