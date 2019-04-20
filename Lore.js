@@ -185,6 +185,11 @@ Array.prototype.drop = function(thing) {
 	}
 }
 
+//a function to trim strings
+function shave(str) {
+	return str.trim();
+}
+
 //a simple word count function
 function wordCount(txt) {
         var sacrificialString = txt;
@@ -648,6 +653,19 @@ function commafy(num) {
     return arr.join(".");
 }
 
+//functions exclusively for development, to make sure a line has been tripped, eg in an if statement.
+function hey() {
+	alert("Hey-o!");
+}
+
+function yo() {
+	alert("Yo!");
+}
+
+//function to reach a particular element
+function getTo(elem) {
+	document.querySelector(elem).scrollIntoView(true);
+}
 
 //a function for Mutation Observer
 jQuery.fn.evolve = function(func) {
@@ -710,3 +728,28 @@ function Art(ident) {
 		x.fill();
 	}
 }
+
+/* STYLING CLASSES */
+
+$(document).ready(function() {
+
+	var classes = {
+		"strike": {
+			"text-decoration": "line-through"
+		},
+		"forbidden": {
+			"cursor": "not-allowed"
+		},
+		"central": {
+			"text-align": "center"
+		},
+		"askew": {
+			"transform": "rotate(45deg)"
+		}
+	}
+
+	for (var clas in classes) {
+		$("." + clas).css(classes[clas]);
+	}
+
+});
