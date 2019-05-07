@@ -667,6 +667,18 @@ function getTo(elem) {
 	document.querySelector(elem).scrollIntoView(true);
 }
 
+//function to read a value on hover
+jQuery.fn.entitle = function(txt) {
+	$(this).hover(function() {
+		$(this).attr("title", txt);
+	});
+}
+
+//a function to reinforce the text on hover
+function echo(elem) {
+	$(elem).entitle($(elem).text());
+}
+
 //a function for Mutation Observer
 jQuery.fn.evolve = function(func) {
 	var that = $(this)[0].id;
@@ -745,6 +757,11 @@ $(document).ready(function() {
 		},
 		"askew": {
 			"transform": "rotate(45deg)"
+		},
+		"trailing": {
+			"text-overflow": "ellipsis",
+			"white-space": "nowrap",
+			"overflow": "hidden"
 		}
 	}
 
