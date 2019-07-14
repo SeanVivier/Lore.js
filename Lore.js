@@ -679,6 +679,45 @@ function echo(elem) {
 	$(elem).entitle($(elem).text());
 }
 
+//a function to avoid the false positives and false negatives of isNaN
+function isDigit(tst) {
+	return Number(tst) === tst;
+}
+
+//functions to check and uncheck
+function check(elem) {
+	document.querySelectorAll(elem).forEach(function(el) {
+		el.checked = true;
+	});
+}
+
+function uncheck(elem) {
+	document.querySelectorAll(elem).forEach(function(el) {
+		el.checked = false;
+	});
+}
+
+//function to raise to a power
+Number.prototype.toPower = function(power) {
+	return Math.pow(this, power);
+}
+
+//function to get Object keys
+function keyCopy(obj) {
+	return Object.keys(obj);
+}
+
+//function for case-insensitive alphabetical sort
+function alphaSort(arr) {
+	arr.sort(function(a, b) {
+		var scale = 1;
+		if (a.toLowerCase() < b.toLowerCase()) {
+			scale = -1;
+		}
+		return scale;
+	});
+}
+
 //a function for Mutation Observer
 jQuery.fn.evolve = function(func) {
 	var that = $(this)[0].id;
@@ -762,6 +801,12 @@ $(document).ready(function() {
 			"text-overflow": "ellipsis",
 			"white-space": "nowrap",
 			"overflow": "hidden"
+		},
+		"dead": {
+			"color":"white",
+			"opacity":".5",
+			"background":"lightgray",
+			"cursor":"default"
 		}
 	}
 
