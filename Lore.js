@@ -718,6 +718,23 @@ function alphaSort(arr) {
 	});
 }
 
+//function to sort by a specific key in an array of objects
+Array.prototype.sortVia = function(key) {
+	this.sort(function(a, b) {
+		var val = 0;
+		if (isDigit(a[key])) {
+			val = a[key] - b[key];
+		} else {
+			if (a[key].toLowerCase() < b[key].toLowerCase()) {
+				val = -1;
+			} else {
+				val = 1;
+			}
+		}
+		return val;
+	});
+}
+
 //a function for Mutation Observer
 jQuery.fn.evolve = function(func) {
 	var that = $(this)[0].id;
