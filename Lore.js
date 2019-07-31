@@ -718,6 +718,18 @@ function alphaSort(arr) {
 	});
 }
 
+//function to fully flatten
+function press(arr) {
+	return arr.flat(Infinity);
+}
+
+//function to allow a pause
+function hold(func) {
+	setTimeout(function() {
+		func;
+	}, 0);
+}
+
 //function to sort by a specific key in an array of objects
 Array.prototype.sortVia = function(key) {
 	this.sort(function(a, b) {
