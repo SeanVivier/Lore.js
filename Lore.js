@@ -747,6 +747,35 @@ Array.prototype.sortVia = function(key) {
 	});
 }
 
+//a function to find how many days have passed since given date
+function daysSince(d) {
+	return Math.floor((new Date() - new Date(d)) / (1000*60*60*24));
+}
+
+//a function to test for presence of regex
+String.prototype.testAgainst = function(regex) {
+	return this.match(regex) !== null;
+}
+
+//a function to find empty strings and blank strings
+function isBlank(str) {
+	return str.testAgainst(/^\s*$/);
+}
+
+//a simple try/catch function
+function doTry(func) {
+	try {
+		func();
+	} catch (e) {
+		console.log(e);
+	}
+}
+
+//a function to find the length of an Object
+function findSize(o) {
+	return keyCopy(o).length;
+}
+
 //a function for Mutation Observer
 jQuery.fn.evolve = function(func) {
 	var that = $(this)[0].id;
@@ -807,6 +836,12 @@ function Art(ident) {
 		x.fillStyle = obj.color || "black";
 		x.fill();
 	}
+}
+
+//cryptography
+var Cipher = window.crypto || window.msCrypto;
+Cipher.randNums = function(num) {
+	return this.getRandomValues(new Uint32Array(num));
 }
 
 /* STYLING CLASSES */
