@@ -776,6 +776,41 @@ function findSize(o) {
 	return keyCopy(o).length;
 }
 
+//function to hold JSON in local storage
+function holdJSON(name, val) {
+	localStorage.setItem(name, JSON.stringify(val));
+}
+
+//function to get JSON held in local storage
+function takeJSON(name) {
+	return JSON.parse(localStorage.getItem(name));
+}
+
+//function for fake event on element
+function pretend(elem, ev) {
+	document.querySelector(elem).dispatchEvent(new Event(ev));
+}
+
+//function to flatten array to any depth
+function stamp(arr) {
+	return arr.flat(Infinity);
+}
+
+//a function to get a number at a fixed decimal
+function fix(n, dec) {
+	return Number(n.toFixed(dec));
+}
+
+//function to change the source
+jQuery.fn.src = function(val) {
+	$(this).attr("src", val);
+}
+
+//function to change the href
+jQuery.fn.href = function(val) {
+	$(this).attr("href", val);
+}
+
 //a function for Mutation Observer
 jQuery.fn.evolve = function(func) {
 	var that = $(this)[0].id;
@@ -871,6 +906,12 @@ $(document).ready(function() {
 			"opacity":".5",
 			"background":"lightgray",
 			"cursor":"default"
+		},
+		"diag": {
+			//
+		},
+		"middled": {
+			"align-items": "center"
 		}
 	}
 
