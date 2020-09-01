@@ -8,9 +8,21 @@ $(document).ready(function() {
     $("h4").addClass("h");
     $("h5").addClass("h");
     $("h6").addClass("h");
+	//to target iframes
+	if ($("iframe")) {
+		iframe = document.querySelector("iframe").contentDocument;
+	}
 });
 
 /* VARIABLES */
+
+//to target iframes
+var iframe;
+$(document).ready(function() {
+	if ($("iframe")) {
+		iframe = document.querySelector("iframe").contentDocument;
+	}
+});
 
 //Spanish special characters
 var AAcute = "\xC1";
@@ -73,6 +85,9 @@ var sixKey = 54;
 var sevenKey = 55;
 var eightKey = 56;
 var nineKey = 57;
+
+//for easy conversion from month number to month name
+var monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 var path = window.location.pathname;
 
@@ -811,6 +826,21 @@ jQuery.fn.href = function(val) {
 	$(this).attr("href", val);
 }
 
+//a function to draw attention to a console log item
+function hype(str) {
+	console.log("!!!!!!!!!!!!");
+	console.log(str);
+}
+
+//functions to add and subtract days
+function subtractDay(d, n) {
+	d.setDate(d.getDate() + n);
+}
+
+function subtractDay(d, n) {
+	d.setDate(d.getDate() - n);
+}
+
 //a function for Mutation Observer
 jQuery.fn.evolve = function(func) {
 	var that = $(this)[0].id;
@@ -907,8 +937,8 @@ $(document).ready(function() {
 			"background":"lightgray",
 			"cursor":"default"
 		},
-		"diag": {
-			//
+		"glow": {
+			"box-shadow": "0px 0px 5px gold"
 		},
 		"middled": {
 			"align-items": "center"
