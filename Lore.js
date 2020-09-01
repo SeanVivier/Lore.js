@@ -8,10 +8,6 @@ $(document).ready(function() {
     $("h4").addClass("h");
     $("h5").addClass("h");
     $("h6").addClass("h");
-	//to target iframes
-	if ($("iframe")) {
-		iframe = document.querySelector("iframe").contentDocument;
-	}
 });
 
 /* VARIABLES */
@@ -19,7 +15,7 @@ $(document).ready(function() {
 //to target iframes
 var iframe;
 $(document).ready(function() {
-	if ($("iframe")) {
+	if (document.querySelector("iframe")) {
 		iframe = document.querySelector("iframe").contentDocument;
 	}
 });
